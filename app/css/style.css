@@ -1,0 +1,76 @@
+body {
+	background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.title, h1 {
+	text-align: center;
+	width: 100%;
+	color: white;
+}
+
+.settings {
+	color: white;
+	font-size: 2em;
+	margin: 10px 10px 0 0;
+}
+
+.settings .fas {
+	margin-right: 20px;
+}
+
+.settings a:link {
+	color: #fff;
+}
+
+.settings a:hover {
+	color: #d6d5d5;
+}
+
+.category_button {
+	color: blue;
+	width: 100%;
+	height: 100px;
+	margin: 5px;
+}
+
+.article_button {
+	width: 40%;
+	color: red;
+	margin: 5px;
+	height: 45px;
+}
+
+.predictive_button {
+	margin: 5px;
+	color: black;
+	width: 100%;
+	height: 50px;
+}
+
+.container-fluid {
+	height: 100vh;
+}
+
+#clearTalk {
+	width: 80px;
+	height: 50px;
+	vertical-align: top;
+}
+
+#speech {
+	width: 75%;
+	height: 50px;
+	font-size: 1.5em;
+}
+
+#talk {
+	width: 120px;
+	height: 50px;
+	vertical-align: top;
+}
+
+#talkForm {
+	margin-top: 20px;
+	text-align: center;
+	width: 100%;
+}

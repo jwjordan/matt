@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>M.A.T.T.</title>
+		<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+		<link rel="stylesheet" type="text/css" href="./css/style.css">
+
+		<!-- Font Awesome icons -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+		<!-- Bootstrap 4 CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script>let $ = require('jquery');</script>
+		<script>require('popper.js');</script>
+		<script>require('bootstrap');</script>
+
+	</head>
+
+	<body style="background-image: url('./img/bg.jpg'); background-size: cover; background-blend-mode: color;">
+		<div class="float-right settings">
+			<a href="#" id="edit"><i class="fas fa-pen"></i></a>
+			<a href="#" id="settings"><i class="fas fa-cog"></i></a>
+		</div>
+		<div class="container-fluid d-flex flex-column">
+			<div class="row">
+				<div class="title">
+					<h1>M.A.T.T.</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-9" id="favorites_section">
+					<div class="row">
+						<div class="col"><button class="btn btn-primary category_button">Favorite 1</button></div>
+						<div class="col"><button class="btn btn-primary category_button">Favorite 2</button></div>
+						<div class="col"><button class="btn btn-primary category_button">Favorite 3</button></div>
+					</div>
+					<div class="row">
+						<div class="col"><button class="btn btn-primary category_button">Favorite 4</button></div>
+						<div class="col"><button class="btn btn-primary category_button">Favorite 5</button></div>
+						<div class="col"><button class="btn btn-primary category_button">Favorite 6</button></div>
+					</div>
+					<div class="row">
+						<div class="col"><button class="btn btn-primary category_button">Favorite 7</button></div>
+						<div class="col"><button class="btn btn-primary category_button">Favorite 8</button></div>
+						<div class="col"><button class="btn btn-primary category_button">Favorite 9</button></div>
+					</div>
+
+				</div>
+				<div class="col-md-3" id="right_sidebar"></div>
+			</div>
+			<div class="row">
+				<div class="col-md-9">
+					<div class="row predictive_text">
+						<div class="col"><button class="btn btn-light predictive_button" id="predictive_button_1">Predictive Text 1</button></div>
+						<div class="col"><button class="btn btn-light predictive_button" id="predictive_button_2">Predictive Text 2</button></div>
+						<div class="col"><button class="btn btn-light predictive_button" id="predictive_button_3">Predictive Text 3</button></div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-9">
+					<form id="talkForm">
+						<button class="btn btn-danger" id="clearTalk" type="button">Clear</button>
+						<input type="text" name="speech" id="speech">
+						<button class="btn btn-success" id="talk" type="submit">Speak</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="favEditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Edit Favorite</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<input type="hidden" id="favorite-number" value="0">
+							<input type="text" class="form-control" id="favorite-name" placeholder="Name">
+							<input type="text" class="form-control" id="favorite-value" placeholder="Text to speak">
+							<input type="text" class="form-control" id="favorite-color" placeholder="Button color (i.e. #fff)">
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary" id="saveFav">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<script type="module" src="./js/index.js"></script>
+
+</html>
