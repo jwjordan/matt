@@ -19,6 +19,8 @@ console.log("Current OS: ", platform);
 
 // Auto-reload window plugin
 require('electron-reload')(__dirname);
+// Auto update
+require('update-electron-app')()
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
