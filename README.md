@@ -1,19 +1,29 @@
 # Getting Started
-Install dependencies
+## Install dependencies
 ```
 npm install
 ```
 
-Run app locally
+## Run app locally
 ```
 npm start
 ```
 
-Compile native app
+## Compile native app
 ```
 npm i -g @electron-forge/cli;
 electron-forge make
 ```
+
+## Publish a version
+1. Make the packages
+```
+electron-forge make -V VERSION_NUMBER
+```
+1. Create a release in GitHub web UI
+1. Upload the release package binaries (.zip for MacOS, .exe for Windows) to the release
+
+TODO: figure out how to sign packages.  See [Electron code signing guide](https://electronjs.org/docs/tutorial/code-signing)
 
 # Resources
 [NPM Say TTS Library](https://www.npmjs.com/package/say)
