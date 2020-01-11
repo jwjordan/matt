@@ -15,6 +15,7 @@ const say = require('say');
 
 // Save the current operating system
 const platform = process.platform;
+console.log("Current OS: ", platform);
 
 // Auto-reload window plugin
 require('electron-reload')(__dirname);
@@ -111,14 +112,3 @@ ipcMain.handle('suggest', function(event, arg) {
 		return results;
 	});
 });
-
-console.log("Current OS: ", platform);
-
-// Proof of concept of platofrm differentiation
-if (platform === "win32") {
-	tts.getAvailableVoices({
-		success: function (list) {
-			console.log(list);
-		}
-	});
-}
