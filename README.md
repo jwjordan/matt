@@ -24,6 +24,7 @@ electron-forge make -V VERSION_NUMBER
 1. Upload the release package binaries (.zip for MacOS, .exe for Windows) to the release
 
 TODO: figure out how to sign packages.  See [Electron code signing guide](https://electronjs.org/docs/tutorial/code-signing)
+TODO: figure out auto update process. See [Electron Forge update guide](https://www.electronforge.io/advanced/auto-update)
 
 # Resources
 [NPM Say TTS Library](https://www.npmjs.com/package/say)
