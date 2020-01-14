@@ -18,7 +18,7 @@ electron-forge make
 ## Publish a version
 1. Make the packages
 ```
-electron-forge make -V VERSION_NUMBER
+electron-forge make
 ```
 1. Create a release in GitHub web UI
 1. Upload the release package binaries (.zip for MacOS, .exe for Windows) to the release
