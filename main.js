@@ -1,14 +1,81 @@
 const {
-    app,
-    BrowserWindow,
-    ipcMain
+	app,
+	BrowserWindow,
+	ipcMain
 } = require('electron');
 const rp = require('request-promise-native');
 
 const DataStore = require('./app/js/DataStore.js');
 
-// Windows-only TTS library
-//var tts = require('sapi_tts/tts.js');
+// this should be placed at top of main.js to handle setup events quickly
+if (handleSquirrelEvent()) {
+	// squirrel event handled and app will exit in 1000ms, so don't do anything else
+	return;
+}
+
+function handleSquirrelEvent() {
+	if (process.argv.length === 1) {
+		return false;
+	}
+
+	const ChildProcess = require('child_process');
+	const path = require('path');
+
+	const appFolder = path.resolve(process.execPath, '..');
+	const rootAtomFolder = path.resolve(appFolder, '..');
+	const updateDotExe = path.resolve(path.join(rootAtomFolder, 'Update.exe'));
+	const exeName = path.basename(process.execPath);
+
+	const spawn = function (command, args) {
+		let spawnedProcess, error;
+
+		try {
+			spawnedProcess = ChildProcess.spawn(command, args, {
+				detached: true
+			});
+		} catch (error) {}
+
+		return spawnedProcess;
+	};
+
+	const spawnUpdate = function (args) {
+		return spawn(updateDotExe, args);
+	};
+
+	const squirrelEvent = process.argv[1];
+	switch (squirrelEvent) {
+		case '--squirrel-install':
+		case '--squirrel-updated':
+			// Optionally do things such as:
+			// - Add your .exe to the PATH
+			// - Write to the registry for things like file associations and
+			//   explorer context menus
+
+			// Install desktop and start menu shortcuts
+			spawnUpdate(['--createShortcut', exeName]);
+
+			setTimeout(app.quit, 1000);
+			return true;
+
+		case '--squirrel-uninstall':
+			// Undo anything you did in the --squirrel-install and
+			// --squirrel-updated handlers
+
+			// Remove desktop and start menu shortcuts
+			spawnUpdate(['--removeShortcut', exeName]);
+
+			setTimeout(app.quit, 1000);
+			return true;
+
+		case '--squirrel-obsolete':
+			// This is called on the outgoing version of your app before
+			// we update to the new version - it's the opposite of
+			// --squirrel-updated
+
+			app.quit();
+			return true;
+	}
+};
 
 // Windows / Linux / Mac TTS library
 const say = require('say');
@@ -27,27 +94,27 @@ require('update-electron-app')()
 let win
 
 function createWindow() {
-    // Create the browser window.
-    win = new BrowserWindow({
-        width: 800,
-        height: 600,
-        webPreferences: {
-            nodeIntegration: true
-        }
-    })
+	// Create the browser window.
+	win = new BrowserWindow({
+		width: 800,
+		height: 600,
+		webPreferences: {
+			nodeIntegration: true
+		}
+	})
 
 	win.maximize();
 
-    // and load the index.html of the app.
-    win.loadFile('app/index.html');
+	// and load the index.html of the app.
+	win.loadFile('app/index.html');
 
-    // Emitted when the window is closed.
-    win.on('closed', () => {
-        // Dereference the window object, usually you would store windows
-        // in an array if your app supports multi windows, this is the time
-        // when you should delete the corresponding element.
-        win = null
-    });
+	// Emitted when the window is closed.
+	win.on('closed', () => {
+		// Dereference the window object, usually you would store windows
+		// in an array if your app supports multi windows, this is the time
+		// when you should delete the corresponding element.
+		win = null
+	});
 }
 
 // This method will be called when Electron has finished
@@ -57,34 +124,34 @@ app.on('ready', createWindow)
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
-    // On macOS it is common for applications and their menu bar
-    // to stay active until the user quits explicitly with Cmd + Q
-    if (process.platform !== 'darwin') {
-        app.quit()
-    }
+	// On macOS it is common for applications and their menu bar
+	// to stay active until the user quits explicitly with Cmd + Q
+	if (process.platform !== 'darwin') {
+		app.quit()
+	}
 })
 
 app.on('activate', () => {
-    // On macOS it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
-    if (win === null) {
-        createWindow()
-    }
+	// On macOS it's common to re-create a window in the app when the
+	// dock icon is clicked and there are no other windows open.
+	if (win === null) {
+		createWindow()
+	}
 })
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
 ipcMain.handle("formSubmit", function (event, arg) {
-    console.log("Argument: ", arg);
+	console.log("Argument: ", arg);
 
-    /*tts.speakText({
-        voice_id: "tts:HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_EN-US_DAVID_11.0",
-        text: arg,
-        success: function () {
-            console.log("done speaking!");
-        }
-    });*/
+	/*tts.speakText({
+	    voice_id: "tts:HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_EN-US_DAVID_11.0",
+	    text: arg,
+	    success: function () {
+	        console.log("done speaking!");
+	    }
+	});*/
 
 	//@TODO replace these with real values
 	const voice = null;
@@ -100,7 +167,7 @@ ipcMain.handle("formSubmit", function (event, arg) {
 // Suggest words with datamuse API, see https://www.datamuse.com/api/
 // @TODO clip to last word of arg only, since that's all datamuse will use anyway
 // @TODO cache results
-ipcMain.handle('suggest', function(event, arg) {
+ipcMain.handle('suggest', function (event, arg) {
 	const encodedArg = encodeURIComponent(arg);
 	return rp.get('https://api.datamuse.com/words?max=20&md=p&lc=' + encodedArg).then((r) => {
 		let results = JSON.parse(r) || [];
