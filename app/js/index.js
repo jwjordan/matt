@@ -128,9 +128,9 @@ $( document ).ready(function() {
 		say.getInstalledVoices((err, voices) => {
 			console.log("Voices: ", voices);
 			let voiceOptionsHTML = "<option>System Default</option>";
-			for (voice in voices) {
+			voices.forEach((voice) => {
 				voiceOptionsHTML += "<option>" + voice + "</option>";
-			}
+			});
 			$('#voiceSelect').html(voiceOptionsHTML);
 			$('[name=voiceSelect] option').filter(function () {
 				return ($(this).text() == appSettings.voice);
