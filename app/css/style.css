@@ -1,11 +1,23 @@
 body {
-	background-color: rgba(0, 0, 0, 0.5) !important;
+	background-color: #F7F7F7 !important;
+}
+
+.title {
+	margin-bottom: 20px;
 }
 
 .title, h1 {
 	text-align: center;
 	width: 100%;
 	color: white;
+}
+
+.logo {
+	max-height: 125px;
+}
+
+#right_sidebar {
+	text-align: center;
 }
 
 .settings {
@@ -19,15 +31,15 @@ body {
 }
 
 .settings a:link {
-	color: #fff;
+	color: #D24CAD;
 }
 
 .settings a:hover {
-	color: #d6d5d5;
+	color: #96377c;
 }
 
-.category_button {
-	color: blue;
+/* Colors controlled in Bootstrap button customization section */
+.favorite_button {
 	width: 100%;
 	height: 100px;
 	margin: 5px;
@@ -74,3 +86,33 @@ body {
 	text-align: center;
 	width: 100%;
 }
+
+/* Settings styles */
+.settings-body {
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+
+.range-label {
+	margin-top: 20px;
+	margin-bottom: 5px;
+	text-align: center;
+	font-size: 1.5em;
+}
+
+
+/* Bootstrap Button Customizations */
+.btn-favorite{color:#fff !important; background-color:#0E2B6E !important;border-color:#005a5a}
+
+.btn-favorite:hover{color:#fff !important;background-color:#0c2357 !important;border-color:#009a9a}
+.btn-favorite:focus,.btn-favorite.focus{box-shadow:0 0 0 .2rem rgba(0,90,90,0.5)}
+.btn-favorite.disabled,.btn-favorite:disabled{color:#0E2B6E !important;background-color:teal;border-color:#005a5a}
+.btn-favorite:not(:disabled):not(.disabled):active,.btn-favorite:not(:disabled):not(.disabled).active,.show>.btn-favorite.dropdown-toggle{color:#0E2B6E !important;background-color:#00b3b3;border-color:#000}
+.btn-favorite:not(:disabled):not(.disabled):active:focus,.btn-favorite:not(:disabled):not(.disabled).active:focus,.show>.btn-favorite.dropdown-toggle:focus{box-shadow:0 0 0 .2rem rgba(0,90,90,0.5)}
+
+.btn-outline-favorite{color:teal;background-color:transparent;background-image:none;border-color:teal}.btn-outline-favorite:hover{color:#222;background-color:#009a9a;border-color:teal}
+.btn-outline-favorite:focus,.btn-outline-favorite.focus{box-shadow:0 0 0 .2rem rgba(0,128,128,0.5)}
+.btn-outline-favorite.disabled,.btn-outline-favorite:disabled{color:teal;background-color:transparent}
+.btn-outline-favorite:not(:disabled):not(.disabled):active,.btn-outline-favorite:not(:disabled):not(.disabled).active,.show>.btn-outline-favorite.dropdown-toggle{color:#0E2B6E;background-color:#009a9a;border-color:teal}
+.btn-outline-favorite:not(:disabled):not(.disabled):active:focus,.btn-outline-favorite:not(:disabled):not(.disabled).active:focus,.show>.btn-outline-favorite.dropdown-toggle:focus{box-shadow:0 0 0 .2rem rgba(0,128,128,0.5)}

@@ -14,7 +14,7 @@ const favoritesSection = document.getElementById('favorites_section');
 
 var sidebarContents = [
 	"a", "an", "and", "but", "by", "for", "the", "with",
-	"Hello", "Goodbye", "Yes", "No"
+	"Hello", "Goodbye", "Yes", "No", "Thanks", "No Thanks"
 ];
 
 const addToSpeechInput = (text) => {
@@ -70,9 +70,9 @@ function renderFavorites() {
 		}
 
 		// Using the color property in bootstrap requires a lot more than this
-		//favoritesHTML += '<div class="col"><button class="btn btn-primary category_button" style="background-color: '+fav.color+'; border-color: '+fav.color+'" value='+fav.number+'>'+fav.name+'</button></div>';
+		//favoritesHTML += '<div class="col"><button class="btn btn-primary favorite_button" style="background-color: '+fav.color+'; border-color: '+fav.color+'" value='+fav.number+'>'+fav.name+'</button></div>';
 
-		favoritesHTML += '<div class="col"><button class="btn btn-primary category_button" value='+fav.number+'>';
+		favoritesHTML += '<div class="col"><button class="btn btn-favorite favorite_button" value='+fav.number+'>';
 		if (mode == "edit") {
 			favoritesHTML += '<i class="fas fa-pen"></i> ';
 		}
@@ -84,7 +84,7 @@ function renderFavorites() {
 	});
 	favoritesSection.innerHTML = favoritesHTML;
 
-	$('.category_button').click(function() {
+	$('.favorite_button').click(function() {
 		console.log("Category Button Clicked: ", $(this).val());
 
 		// Get the value of the favorite
@@ -136,7 +136,7 @@ $( document ).ready(function() {
 			mode = "edit";
 
 			// Add edit visualization to each favorite button
-			$('.category_button').each(function() {
+			$('.favorite_button').each(function() {
 				$(this).html('<i class="fas fa-pen"></i> ' + $(this).html());
 			});
 
@@ -148,13 +148,21 @@ $( document ).ready(function() {
 			mode = "view";
 
 			// Remove the edit visualization from each favorite button
-			$('.category_button').each(function() {
+			$('.favorite_button').each(function() {
 				$(this).find('.fa-pen').removeClass('fa-pen');
 			});
 
 			// Toggle to Edit button
 			$('#edit').html('<i class="fas fa-pen"></i>');
 		}
+	});
+	
+	$('#settings').click(function() {
+		$('#settingsModal').modal();
+	});
+	
+	$('#saveSettings').click(function() {
+		$('#settingsModal').modal('hide');
 	});
 
 	$('#saveFav').click(function() {

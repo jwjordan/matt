@@ -34,10 +34,16 @@ Some details on Mac signing [here](https://github.com/electron/electron/issues/7
 
 [Bootstrap 4](https://getbootstrap.com)
 
+[Squirrel.Windows Installer Docs](https://github.com/Squirrel/Squirrel.Windows/blob/develop/docs/using/install-process.md)
+
+[Animated GIF Creator](https://ezgif.com)
+
 # Useful Tutorials
 [Build a Todo App with Electron](https://codeburst.io/build-a-todo-app-with-electron-d6c61f58b55a)
 
 [Electron – How to add jQuery and Bootstrap to your project](https://www.ryadel.com/en/electron-jquery-bootstrap-project-add-npm/)
+
+[Electron Splash Screen](https://dev.to/nicolalc/slack-gitkraken-discord-electron-loading-screen-tutorial-3k5n)
 
 # Unsplash wallpaper
 [Photo by Jeremy Thomas on Unsplash](https://unsplash.com/photos/E0AHdsENmDg)

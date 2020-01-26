@@ -28,54 +28,55 @@
 		<div class="container-fluid d-flex flex-column">
 			<div class="row">
 				<div class="title">
-					<h1>M.A.T.T.</h1>
+					<img class="logo" src="./img/logo.png"/>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-9" id="favorites_section">
-					<div class="row">
-						<div class="col"><button class="btn btn-primary category_button">Favorite 1</button></div>
-						<div class="col"><button class="btn btn-primary category_button">Favorite 2</button></div>
-						<div class="col"><button class="btn btn-primary category_button">Favorite 3</button></div>
+				<div class="col-md-9">
+					<div id="favorites_section">
+						<div class="row">
+							<div class="col"><button class="btn btn-favorite favorite_button">Favorite 1</button></div>
+							<div class="col"><button class="btn btn-favorite favorite_button">Favorite 2</button></div>
+							<div class="col"><button class="btn btn-favorite favorite_button">Favorite 3</button></div>
+						</div>
+						<div class="row">
+							<div class="col"><button class="btn btn-favorite favorite_button">Favorite 4</button></div>
+							<div class="col"><button class="btn btn-favorite favorite_button">Favorite 5</button></div>
+							<div class="col"><button class="btn btn-favorite favorite_button">Favorite 6</button></div>
+						</div>
+						<div class="row">
+							<div class="col"><button class="btn btn-favorite favorite_button">Favorite 7</button></div>
+							<div class="col"><button class="btn btn-favorite favorite_button">Favorite 8</button></div>
+							<div class="col"><button class="btn btn-favorite favorite_button">Favorite 9</button></div>
+						</div>
 					</div>
 					<div class="row">
-						<div class="col"><button class="btn btn-primary category_button">Favorite 4</button></div>
-						<div class="col"><button class="btn btn-primary category_button">Favorite 5</button></div>
-						<div class="col"><button class="btn btn-primary category_button">Favorite 6</button></div>
+						<div class="col-md-12">
+							<div class="row predictive_text">
+								<div class="col"><button class="btn btn-dark predictive_button" id="predictive_button_1">Predictive Text 1</button></div>
+								<div class="col"><button class="btn btn-dark predictive_button" id="predictive_button_2">Predictive Text 2</button></div>
+								<div class="col"><button class="btn btn-dark predictive_button" id="predictive_button_3">Predictive Text 3</button></div>
+							</div>
+						</div>
 					</div>
 					<div class="row">
-						<div class="col"><button class="btn btn-primary category_button">Favorite 7</button></div>
-						<div class="col"><button class="btn btn-primary category_button">Favorite 8</button></div>
-						<div class="col"><button class="btn btn-primary category_button">Favorite 9</button></div>
+						<div class="col-md-12">
+							<form id="talkForm">
+								<button class="btn btn-danger" id="clearTalk" type="button">Clear</button>
+								<input type="text" name="speech" id="speech">
+								<button class="btn btn-success" id="talk" type="submit">Speak</button>
+							</form>
+						</div>
 					</div>
-
 				</div>
 				<div class="col-md-3" id="right_sidebar"></div>
 			</div>
-			<div class="row">
-				<div class="col-md-9">
-					<div class="row predictive_text">
-						<div class="col"><button class="btn btn-light predictive_button" id="predictive_button_1">Predictive Text 1</button></div>
-						<div class="col"><button class="btn btn-light predictive_button" id="predictive_button_2">Predictive Text 2</button></div>
-						<div class="col"><button class="btn btn-light predictive_button" id="predictive_button_3">Predictive Text 3</button></div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-9">
-					<form id="talkForm">
-						<button class="btn btn-danger" id="clearTalk" type="button">Clear</button>
-						<input type="text" name="speech" id="speech">
-						<button class="btn btn-success" id="talk" type="submit">Speak</button>
-					</form>
-				</div>
-			</div>
 		</div>
-		<div class="modal fade" id="favEditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal fade" id="favEditModal" tabindex="-1" role="dialog" aria-labelledby="favEditModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Edit Favorite</h5>
+						<h5 class="modal-title" id="favEditModalLabel">Edit Favorite</h5>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -91,6 +92,61 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 						<button type="button" class="btn btn-primary" id="saveFav">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="settingsModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="settingsModalLabel">Settings</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body settings-body">
+						<form>
+							<div class="row range-label">
+								<div class="col-md-12">Voice to use</div>
+							</div>
+							<div class="row">
+								<div class="col-md-1"></div>
+								<div class="col-md-10">
+									<div class="form-group">
+										<select class="form-control" id="exampleFormControlSelect1">
+											<option>System Default</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-1"></div>
+							</div>
+							<div class="row range-label">
+								<div class="col-md-12">Speed of speech</div>
+							</div>
+							<div class="row">
+								<div class="col-md-1">Slow</div>
+								<div class="col-md-10">
+									<input type="range" class="custom-range" id="rangeSpeed">
+								</div>
+								<div class="col-md-1">Fast</div>
+							</div>
+
+							<div class="row range-label">
+								<div class="col-md-12">Pitch of speech</div>
+							</div>
+							<div class="row">
+								<div class="col-md-1">Low</div>
+								<div class="col-md-10">
+									<input type="range" class="custom-range" id="rangePitch">
+								</div>
+								<div class="col-md-1">High</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-favorite" id="saveSettings">Save Settings</button>
 					</div>
 				</div>
 			</div>
