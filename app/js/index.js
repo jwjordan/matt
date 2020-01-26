@@ -1,6 +1,9 @@
 // include the ipc module to communicate with main process.
 const ipcRenderer = require('electron').ipcRenderer;
 
+// Windows / Linux / Mac TTS library
+const say = require('say');
+
 // Extended DataStore class from Electron Store
 // path is relative to index.html, which loads index.js as a module
 const DataStore = require('./js/DataStore.js');
@@ -121,6 +124,11 @@ $( document ).ready(function() {
 	
 	// Populate the settings
 	let appSettings = appData.getAppSettings();
+	if (process.platform == "win32") {
+		say.getInstalledVoices((voices) => {
+			console.log("Voices: ", voices);
+		});
+	}
 	$('#rangeSpeed').val(appSettings.speed);
 	$('#voiceSelect').val(appSettings.voice);
 

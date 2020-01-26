@@ -152,6 +152,12 @@ function createWindow() {
 		}
 		win.show();
 	});
+	
+	if (platform == "win32") {
+		say.getInstalledVoices((voices) => {
+			console.log("Voices: ", voices);
+		});
+	}
 }
 
 // This method will be called when Electron has finished
@@ -186,14 +192,6 @@ app.on('activate', () => {
 
 ipcMain.handle("formSubmit", function (event, arg) {
 	console.log("Speaking: ", arg);
-
-	/*tts.speakText({
-	    voice_id: "tts:HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_EN-US_DAVID_11.0",
-	    text: arg,
-	    success: function () {
-	        console.log("done speaking!");
-	    }
-	});*/
 
 	//@TODO replace these with real values
 	let settings = appData.getAppSettings();
