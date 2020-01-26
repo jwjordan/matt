@@ -6,6 +6,7 @@ const {
 const rp = require('request-promise-native');
 
 const DataStore = require('./app/js/DataStore.js');
+const appData = new DataStore({ name: 'AppData' });
 
 // this should be placed at top of main.js to handle setup events quickly
 if (handleSquirrelEvent()) {
@@ -184,7 +185,7 @@ app.on('activate', () => {
 // code. You can also put them in separate files and require them here.
 
 ipcMain.handle("formSubmit", function (event, arg) {
-	console.log("Argument: ", arg);
+	console.log("Speaking: ", arg);
 
 	/*tts.speakText({
 	    voice_id: "tts:HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_EN-US_DAVID_11.0",
@@ -195,8 +196,17 @@ ipcMain.handle("formSubmit", function (event, arg) {
 	});*/
 
 	//@TODO replace these with real values
-	const voice = null;
-	const speed = null;
+	let settings = appData.getAppSettings();
+	console.log("App settings: ", settings);
+	let voice = null,
+		 speed = null;
+	if (settings.voice != "System Default") {
+		voice = settings.voice;
+	}
+	if (settings.speed) {
+		speed = settings.speed;
+	}
+	console.log("Voice", voice, "at", speed, "speed");
 	return new Promise((resolve, reject) => {
 		say.speak(arg, voice, speed, (err) => {
 			if (err) return reject(err);
