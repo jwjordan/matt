@@ -154,7 +154,7 @@ function createWindow() {
 	});
 	
 	if (platform == "win32") {
-		say.getInstalledVoices((voices) => {
+		say.getInstalledVoices((err, voices) => {
 			console.log("Voices: ", voices);
 		});
 	}

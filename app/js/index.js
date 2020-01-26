@@ -125,12 +125,22 @@ $( document ).ready(function() {
 	// Populate the settings
 	let appSettings = appData.getAppSettings();
 	if (process.platform == "win32") {
-		say.getInstalledVoices((voices) => {
+		say.getInstalledVoices((err, voices) => {
 			console.log("Voices: ", voices);
+			let voiceOptionsHTML = "<option>System Default</option>";
+			for (voice in voices) {
+				voiceOptionsHTML += "<option>" + voice + "</option>";
+			}
+			$('#voiceSelect').html(voiceOptionsHTML);
+			$('[name=voiceSelect] option').filter(function () {
+				return ($(this).text() == appSettings.voice);
+			}).prop('selected', true);
 		});
 	}
 	$('#rangeSpeed').val(appSettings.speed);
-	$('#voiceSelect').val(appSettings.voice);
+	$('[name=voiceSelect] option').filter(function () {
+		return ($(this).text() == appSettings.voice);
+	}).prop('selected', true);
 
 	$('.predictive_button').click(function() {
 		console.log("Predictive Button Clicked: ", $( this ).text());
