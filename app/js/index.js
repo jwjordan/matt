@@ -4,7 +4,7 @@ const ipcRenderer = require('electron').ipcRenderer;
 // Extended DataStore class from Electron Store
 // path is relative to index.html, which loads index.js as a module
 const DataStore = require('./js/DataStore.js');
-const favData = new DataStore({ name: 'Favorites' });
+const appData = new DataStore({ name: 'AppData' });
 
 const formSubmit = document.getElementById('talkForm');
 const formClear = document.getElementById('clearTalk');
@@ -47,17 +47,17 @@ const debounce = (func, delay) => {
 }
 
 // Bootstrap favorite placeholders for initial app load
-if (favData.favorites.length == 0) {
+if (appData.favorites.length == 0) {
 	for (var i=1; i<=9; i++) {
 		let placeholderObj = {number: i, name: "Favorite", value: "", color: ""};
-		favData.addFavorite(placeholderObj);
+		appData.addFavorite(placeholderObj);
 	}
 }
 
 var mode = "view";
 
 function renderFavorites() {
-	let favorites = favData.favorites,
+	let favorites = appData.favorites,
 		favoritesHTML = "",
 		favCount = 0,
 		rowCount = 0;
@@ -107,7 +107,7 @@ function renderFavorites() {
 
 // Populate the page on document ready
 $( document ).ready(function() {
-	let favorites = favData.favorites;;
+	let favorites = appData.favorites;
 
 	// Populate favorites
 	renderFavorites();
@@ -118,6 +118,11 @@ $( document ).ready(function() {
 		sidebarHTML += '<button class="btn btn-secondary article_button">'+word+'</button>';
 	});
 	sideBar.innerHTML = sidebarHTML;
+	
+	// Populate the settings
+	let appSettings = appData.getAppSettings();
+	$('#rangeSpeed').val(appSettings.speed);
+	$('#voiceSelect').val(appSettings.voice);
 
 	$('.predictive_button').click(function() {
 		console.log("Predictive Button Clicked: ", $( this ).text());
@@ -162,6 +167,14 @@ $( document ).ready(function() {
 	});
 	
 	$('#saveSettings').click(function() {
+		let speed = $('#rangeSpeed').val(),
+			 voice = $('#voiceSelect').val();
+		
+		appData.saveAppSettings({speed: speed, voice: voice});
+		
+		let settings = appData.getAppSettings();
+		console.log("Settings: ", settings);
+		
 		$('#settingsModal').modal('hide');
 	});
 
@@ -177,7 +190,7 @@ $( document ).ready(function() {
 		}
 		console.log("Favorite data: ", favorite);
 
-		favData.updateFavorite($('#favorite-number').val(), favorite);
+		appData.updateFavorite($('#favorite-number').val(), favorite);
 
 		// Re-render the favorites list
 		renderFavorites();

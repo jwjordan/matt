@@ -6,6 +6,7 @@ class DataStore extends Store {
 		super(settings)
 		
 		this.favorites = this.get('favorites') || [];
+		this.appSettings = this.get('appSettings') || [];
 	}
 	
 	saveFavorites() {
@@ -51,6 +52,21 @@ class DataStore extends Store {
 		this.favorites = [];
 		
 		return this.saveFavorites();
+	}
+	
+	saveAppSettings(settings) {
+		// save favorites to JSON file
+		this.set('appSettings', settings);
+		
+		// returning 'this' allows method chaining
+		return this;
+	}
+	
+	getAppSettings() {
+		// set object's favorites to favorites in JSON file
+		this.appSettings = this.get('appSettings') || [];
+		
+		return this.appSettings;
 	}
 }
 
