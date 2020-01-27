@@ -2,7 +2,7 @@
 	"name": "matt",
 	"productName": "matt",
 	"version": "1.0.0",
-	"description": "My Electron application description",
+	"description": "Matt's Automatic Talking Text",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/jwjordan/matt.git"
@@ -32,7 +32,8 @@
 					"config": {
 						"name": "matt",
 						"loadingGif": "./app/img/installing.gif",
-						"iconUrl": "https://www.dropbox.com/s/n8y120qo583n0oy/icon.ico?dl=1"
+						"iconUrl": "https://drive.google.com/uc?export=view&id=1LI6avtNNS_ptH6LgoFrGYICmA3VYNl0h",
+						"setupIcon": "/app/img/icon.ico"
 					}
         },
 				{
