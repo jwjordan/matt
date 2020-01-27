@@ -29,7 +29,7 @@
           "name": "@electron-forge/maker-squirrel",
           "config": {
             "name": "matt",
-            "loadingGif": "/app/img/bouncing_square_loaded.gif"
+            "loadingGif": "./app/img/installing.gif"
           }
         },
         {
