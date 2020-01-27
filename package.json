@@ -1,72 +1,75 @@
 {
-  "name": "matt",
-  "productName": "matt",
-  "version": "1.0.0",
-  "description": "My Electron application description",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jwjordan/matt.git"
-  },
-  "main": "main.js",
-  "scripts": {
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
-  },
-  "keywords": [],
-  "author": {
-    "name": "bsmithwick",
-    "email": "brian.smithwick@servicetrade.com"
-  },
-  "license": "MIT",
-  "config": {
-    "forge": {
-      "packagerConfig": {},
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "matt",
-            "loadingGif": "./app/img/installing.gif"
-          }
+	"name": "matt",
+	"productName": "matt",
+	"version": "1.0.0",
+	"description": "My Electron application description",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jwjordan/matt.git"
+	},
+	"main": "main.js",
+	"scripts": {
+		"start": "electron-forge start",
+		"package": "electron-forge package",
+		"make": "electron-forge make",
+		"publish": "electron-forge publish",
+		"lint": "echo \"No linting configured\""
+	},
+	"keywords": [],
+	"author": {
+		"name": "bsmithwick",
+		"email": "brian.smithwick@servicetrade.com"
+	},
+	"license": "MIT",
+	"config": {
+		"forge": {
+			"packagerConfig": {
+				"icon": "./app/img/icon.icns"
+			},
+			"makers": [
+				{
+					"name": "@electron-forge/maker-squirrel",
+					"config": {
+						"name": "matt",
+						"loadingGif": "./app/img/installing.gif",
+						"iconUrl": "https://www.dropbox.com/s/n8y120qo583n0oy/icon.ico?dl=1"
+					}
         },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
+				{
+					"name": "@electron-forge/maker-zip",
+					"platforms": [
             "darwin"
           ]
         },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
+				{
+					"name": "@electron-forge/maker-deb",
+					"config": {}
         },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
+				{
+					"name": "@electron-forge/maker-rpm",
+					"config": {}
         }
       ]
-    }
-  },
-  "dependencies": {
-    "bootstrap": "^4.4.1",
-    "electron-reload": "^1.5.0",
-    "electron-squirrel-startup": "^1.0.0",
-    "electron-store": "^5.1.0",
-    "jquery": "^3.4.1",
-    "popper.js": "^1.16.0",
-    "request": "^2.88.0",
-    "request-promise-native": "^1.0.8",
-    "say": "^0.16.0",
-    "update-electron-app": "^1.5.0"
-  },
-  "devDependencies": {
-    "@electron-forge/cli": "6.0.0-beta.47",
-    "@electron-forge/maker-deb": "6.0.0-beta.47",
-    "@electron-forge/maker-rpm": "6.0.0-beta.47",
-    "@electron-forge/maker-squirrel": "6.0.0-beta.47",
-    "@electron-forge/maker-zip": "6.0.0-beta.47",
-    "electron": "7.1.8"
-  }
+		}
+	},
+	"dependencies": {
+		"bootstrap": "^4.4.1",
+		"electron-reload": "^1.5.0",
+		"electron-squirrel-startup": "^1.0.0",
+		"electron-store": "^5.1.0",
+		"jquery": "^3.4.1",
+		"popper.js": "^1.16.0",
+		"request": "^2.88.0",
+		"request-promise-native": "^1.0.8",
+		"say": "^0.16.0",
+		"update-electron-app": "^1.5.0"
+	},
+	"devDependencies": {
+		"@electron-forge/cli": "6.0.0-beta.47",
+		"@electron-forge/maker-deb": "6.0.0-beta.47",
+		"@electron-forge/maker-rpm": "6.0.0-beta.47",
+		"@electron-forge/maker-squirrel": "6.0.0-beta.47",
+		"@electron-forge/maker-zip": "6.0.0-beta.47",
+		"electron": "7.1.8"
+	}
 }
